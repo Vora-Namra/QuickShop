@@ -1,5 +1,5 @@
-
 <resources>
-    <string name="app_name">Ecommerceapp</string>
+    <string name="app_name">QuickShop</string>
     <string name="product_image">Product Image</string>
+    <string name="logo_desc">QuickShop</string>
 </resources>

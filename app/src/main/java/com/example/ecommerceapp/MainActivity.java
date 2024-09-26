@@ -2,10 +2,14 @@ package com.example.ecommerceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import android.view.View;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
