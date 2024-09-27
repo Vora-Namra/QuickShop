@@ -7,6 +7,7 @@
     <color name="colorPrimary">#121212</color>      <!-- Dark grey -->
     <color name="colorPrimaryDark">#1C1C1C</color>  <!-- Darker grey -->
     <color name="colorAccent">#FF4081</color>
+    <color name="orange">#FFA500</color>
 
     <color name="splash_text_color">#FFFFFF</color> <!-- White text color -->
     <color name="splash_background">#FF5722</color>

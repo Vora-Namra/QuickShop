@@ -26,7 +26,7 @@
             android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:textColor="#FFA500"
             android:textSize="18sp"
             android:layout_marginBottom="16dp" />
 
@@ -45,7 +45,7 @@
             android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:textColor="#FFA500"
             android:textSize="18sp"
             android:layout_marginBottom="16dp" />
 
@@ -56,6 +56,8 @@
             android:layout_height="wrap_content"
             android:hint="Address"
             android:inputType="text"
+            android:textColorHint="#FFA500"
+            android:textColor="@color/white"
             android:layout_marginBottom="16dp"
             android:padding="10dp"
             android:background="@drawable/edit_text_background" />
@@ -67,6 +69,8 @@
             android:layout_height="wrap_content"
             android:hint="Phone Number"
             android:inputType="phone"
+            android:textColor="@color/white"
+            android:textColorHint="#FFA500"
             android:layout_marginBottom="16dp"
             android:padding="10dp"
             android:background="@drawable/edit_text_background" />
@@ -77,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Logout"
+            android:backgroundTint="#FFA500"
             android:layout_marginBottom="16dp" />
 
         <!-- Update Button -->
@@ -84,6 +89,7 @@
             android:id="@+id/btn_update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FFA500"
             android:text="Update Profile" />
     </LinearLayout>
 </ScrollView>
