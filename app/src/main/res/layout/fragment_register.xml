@@ -80,6 +80,36 @@
             android:background="@drawable/edit_text_background"
             android:textColor="#FFFFFF"
             android:textColorHint="#B0BEC5"
+            android:layout_marginBottom="16dp"
+            android:elevation="4dp" />
+
+        <!-- New EditText for Address -->
+        <EditText
+            android:id="@+id/et_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"
+            android:inputType="textPostalAddress"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:background="@drawable/edit_text_background"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#B0BEC5"
+            android:layout_marginBottom="16dp"
+            android:elevation="4dp" />
+
+        <!-- New EditText for Phone -->
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:background="@drawable/edit_text_background"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#B0BEC5"
             android:layout_marginBottom="24dp"
             android:elevation="4dp" />
 
