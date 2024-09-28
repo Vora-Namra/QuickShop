@@ -49,7 +49,7 @@ public class ProductDetailFragment extends Fragment {
         tvProductName = view.findViewById(R.id.tv_product_name);
         tvProductDescription = view.findViewById(R.id.tv_product_description);
         tvProductPrice = view.findViewById(R.id.tv_product_price);
-        ivProductImage = view.findViewById(R.id.iv_product_image);
+        ivProductImage = view.findViewById(R.id.iv_product);
         btnAddToCart = view.findViewById(R.id.btn_add_to_cart);
 
         // Load the product details based on the retrieved product ID
@@ -61,7 +61,6 @@ public class ProductDetailFragment extends Fragment {
         return view; // Return the fragment's root view
     }
 
-    // Method to load and display the product details based on the product ID
     private void loadProductDetails() {
         // Retrieve the product details from the database
         Product product = dbHelper.getProductById(productId);
@@ -72,8 +71,12 @@ public class ProductDetailFragment extends Fragment {
             tvProductDescription.setText(product.getDescription());
             tvProductPrice.setText(String.format("$%.2f", product.getPrice()));
 
-            // Load the product image using the ImageLoader utility class
-            ImageLoader.loadImage(getContext(), product.getImageUrl(), ivProductImage);
+            // Load the product image using Picasso
+            Picasso.get()
+                    .load(product.getImageUrl())
+                    .placeholder(R.drawable.placeholder_image) // Add a placeholder image
+                    .error(R.drawable.ic_error_image) // Add an error image if loading fails
+                    .into(ivProductImage);
         }
     }
 

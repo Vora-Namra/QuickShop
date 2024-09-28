@@ -14,9 +14,14 @@
         <ImageView
             android:id="@+id/iv_product"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:contentDescription="@string/product_image"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_product_name"
+            android:scaleType="centerCrop"
+            />
 
 
         <TextView
