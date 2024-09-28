@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="#121212"> <!-- Dark background color -->
+    android:background="#121212">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -91,5 +92,27 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FFA500"
             android:text="Update Profile" />
+        <!-- Email Support ImageView -->
+        <ImageView
+            android:id="@+id/iv_email_support"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/gmail"
+            android:contentDescription="Email Support"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+             />
+
+        <!-- Call Support ImageView -->
+        <ImageView
+            android:id="@+id/iv_call_support"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/phone"
+        android:contentDescription="Call Support"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+             />
+
     </LinearLayout>
 </ScrollView>

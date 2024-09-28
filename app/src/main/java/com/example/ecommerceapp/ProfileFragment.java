@@ -1,13 +1,16 @@
 package com.example.ecommerceapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
@@ -16,6 +19,7 @@ public class ProfileFragment extends Fragment {
     private EditText etAddress, etPhone;
     private Button btnLogout, btnUpdate;
     private DatabaseHelper dbHelper;
+    private ImageView ivEmailSupport, ivCallSupport;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,12 +32,18 @@ public class ProfileFragment extends Fragment {
         etAddress = view.findViewById(R.id.et_address);
         etPhone = view.findViewById(R.id.et_phone);
         btnLogout = view.findViewById(R.id.btn_logout);
-        btnUpdate = view.findViewById(R.id.btn_update); // New button for update
+        btnUpdate = view.findViewById(R.id.btn_update);  // New button for call support
 
         loadUserProfile();
 
         btnLogout.setOnClickListener(v -> logout());
         btnUpdate.setOnClickListener(v -> updateProfile());
+        ivEmailSupport = view.findViewById(R.id.iv_email_support);
+        ivCallSupport = view.findViewById(R.id.iv_call_support);
+
+        // Set onClick listeners for the ImageViews
+        ivEmailSupport.setOnClickListener(v -> openEmailSupport()); // Open email client
+        ivCallSupport.setOnClickListener(v -> openCallSupport());   // Open phone dialer// Open phone dialer
 
         return view;
     }
@@ -47,8 +57,8 @@ public class ProfileFragment extends Fragment {
             if (user != null) {
                 tvUsername.setText(user.getUsername());
                 tvEmail.setText(user.getEmail());
-                etAddress.setText(user.getAddress()); // Load address
-                etPhone.setText(user.getPhone());     // Load phone
+                etAddress.setText(user.getAddress());
+                etPhone.setText(user.getPhone());
             }
         }
     }
@@ -59,7 +69,6 @@ public class ProfileFragment extends Fragment {
         editor.clear();
         editor.apply();
 
-        // Navigate to LoginFragment
         ((MainActivity) getActivity()).loadFragment(new LoginFragment());
     }
 
@@ -72,7 +81,19 @@ public class ProfileFragment extends Fragment {
             String phone = etPhone.getText().toString();
             User user = dbHelper.getUserById(userId);
             dbHelper.updateUser(userId, user.getUsername(), user.getEmail(), address, phone);
-            // Optionally, show a success message
         }
+    }
+
+    private void openEmailSupport() {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:support@ecommerceapp.com")); // Email address
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Support Request");
+        startActivity(Intent.createChooser(emailIntent, "Send email via:"));
+    }
+
+    private void openCallSupport() {
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:+1234567890")); // Support phone number
+        startActivity(callIntent);
     }
 }
