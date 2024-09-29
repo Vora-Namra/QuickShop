@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment {
     // Method to return a list of drawable resources for deals
     private List<Integer> getDealsImages() {
         List<Integer> dealsImages = new ArrayList<>();
-        dealsImages.add(R.drawable.deal1); // Replace with your actual drawable names
+        dealsImages.add(R.drawable.banner1); // Replace with your actual drawable names
         dealsImages.add(R.drawable.deal2);
         dealsImages.add(R.drawable.deal3);
         return dealsImages;
