@@ -17,7 +17,6 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerViewProducts;
     private RecyclerView recyclerViewBrands;
     private ProductAdapter productAdapter;
-
     private BrandAdapter brandAdapter;
     private List<Product> productList;
     private List<Integer> brandImages;

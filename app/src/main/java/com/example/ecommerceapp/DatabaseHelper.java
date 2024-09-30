@@ -222,7 +222,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "ecommerce.db";
-    private static final int DATABASE_VERSION = 2;  // Incremented for the new columns
+    private static final int DATABASE_VERSION = 6;  // Incremented for the new columns
 
     private static final String TABLE_USERS = "users";
     private static final String COLUMN_USER_ID = "id";
@@ -298,15 +298,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         insertSampleProducts(db);
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 2) {
-            // Upgrade logic to add address and phone to users table
+            // Example for version 2 upgrades
             db.execSQL("ALTER TABLE " + TABLE_USERS + " ADD COLUMN " + COLUMN_ADDRESS + " TEXT");
             db.execSQL("ALTER TABLE " + TABLE_USERS + " ADD COLUMN " + COLUMN_PHONE + " TEXT");
+
+        }
+        if (oldVersion <= 6) {
+            // Example for version 6 upgrades
+            // Handle any new columns or tables introduced in version 6
+            // e.g., db.execSQL("CREATE TABLE ...");
+            insertSampleProducts(db);
         }
     }
+
     private void insertSampleProducts(SQLiteDatabase db) {
         String[] products = {
                 "INSERT INTO " + TABLE_PRODUCTS + " (" +

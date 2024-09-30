@@ -1,6 +1,7 @@
 package com.example.ecommerceapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -63,7 +64,6 @@ public class CartFragment extends Fragment {
         }
         tvTotalPrice.setText(String.format("Total: $%.2f", total));
     }
-
     private void placeOrder() {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         int userId = sharedPreferences.getInt("userId", -1);
@@ -83,10 +83,11 @@ public class CartFragment extends Fragment {
                 // Clear cart
                 dbHelper.clearCart(userId);
 
-                Toast.makeText(getContext(), "Order placed successfully", Toast.LENGTH_SHORT).show();
+                // Start splash screen activity
+                Intent intent = new Intent(getContext(), SplashScreenActivity.class);
+                startActivity(intent);
 
-                // Show order confirmation
-                showOrderConfirmation();
+                Toast.makeText(getContext(), "Order placed successfully", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "Your cart is empty", Toast.LENGTH_SHORT).show();
             }
