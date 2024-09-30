@@ -15,11 +15,11 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerViewProducts;
-    private RecyclerView recyclerViewBrands; // New RecyclerView for brands
+    private RecyclerView recyclerViewBrands;
     private ProductAdapter productAdapter;
-    private BrandAdapter brandAdapter; // Adapter for brands
+    private BrandAdapter brandAdapter;
     private List<Product> productList;
-    private List<Integer> brandImages; // List for brand images
+    private List<Integer> brandImages;
     private DatabaseHelper dbHelper;
     private ViewPager viewPager;
     private DealsAdapter dealsAdapter;
@@ -32,18 +32,21 @@ public class HomeFragment extends Fragment {
         recyclerViewProducts = view.findViewById(R.id.recycler_view_products);
         recyclerViewProducts.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // Initialize Database Helper and fetch products
         dbHelper = new DatabaseHelper(getContext());
         productList = dbHelper.getAllProducts();  // Load products from DB
 
-        productAdapter = new ProductAdapter(productList, new ProductAdapter.OnProductClickListener() {
-            @Override
-            public void onProductClick(Product product) {
-                // Handle product click, e.g., open ProductDetailFragment
-                openProductDetailFragment(product.getId());
-            }
-        });
-
-        recyclerViewProducts.setAdapter(productAdapter);
+        // Ensure productList is not null before setting up the adapter
+        if (productList != null && !productList.isEmpty()) {
+            productAdapter = new ProductAdapter(productList, new ProductAdapter.OnProductClickListener() {
+                @Override
+                public void onProductClick(Product product) {
+                    // Handle product click, e.g., open ProductDetailFragment
+                    openProductDetailFragment(product.getId());
+                }
+            });
+            recyclerViewProducts.setAdapter(productAdapter);
+        }
 
         // Setup for the Deals Slider
         viewPager = view.findViewById(R.id.view_pager_deals);
@@ -71,9 +74,10 @@ public class HomeFragment extends Fragment {
     // Method to return a list of drawable resources for deals
     private List<Integer> getDealsImages() {
         List<Integer> dealsImages = new ArrayList<>();
-        dealsImages.add(R.drawable.banner1); // Replace with your actual drawable names
         dealsImages.add(R.drawable.deal2);
         dealsImages.add(R.drawable.deal3);
+        dealsImages.add(R.drawable.deal5);
+        dealsImages.add(R.drawable.banner1);
         dealsImages.add(R.drawable.banner2);
         return dealsImages;
     }
@@ -81,16 +85,11 @@ public class HomeFragment extends Fragment {
     // Method to return a list of drawable resources for brands
     private List<Integer> getBrandImages() {
         List<Integer> brandImages = new ArrayList<>();
-        brandImages.add(R.drawable.cat1); // Replace with your actual drawable names
+        brandImages.add(R.drawable.cat1);
         brandImages.add(R.drawable.cat2);
         brandImages.add(R.drawable.cat3);
         brandImages.add(R.drawable.cat4);
         brandImages.add(R.drawable.cat5);
-        brandImages.add(R.drawable.cat1); // Replace with your actual drawable names
-        brandImages.add(R.drawable.cat2);
-        brandImages.add(R.drawable.cat3);
-        brandImages.add(R.drawable.cat4);
-        brandImages.add(R.drawable.cat5);// Add more brands as needed
         return brandImages;
     }
 }
