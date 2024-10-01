@@ -396,16 +396,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public User getUserById(int userId) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // Define the columns you want to retrieve from the users table
         String[] columns = {
                 COLUMN_USER_ID,
                 COLUMN_USERNAME,
                 COLUMN_EMAIL,
-                COLUMN_ADDRESS,  // Ensure this is correctly defined
-                COLUMN_PHONE     // Ensure this is correctly defined
+                COLUMN_ADDRESS,
+                COLUMN_PHONE
         };
 
-        // Define the selection criteria
+
         String selection = COLUMN_USER_ID + " = ?";
         String[] selectionArgs = { String.valueOf(userId) };
 
@@ -417,8 +416,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_USER_ID)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USERNAME)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)),
-                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS)),  // Fetch the address
-                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PHONE))     // Fetch the phone
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PHONE))
             );
             cursor.close();
         }
@@ -537,5 +536,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return product;
     }
 
-    // Other existing methods (getAllProducts, addToCart, etc.) remain unchanged
 }

@@ -44,8 +44,8 @@ public class ProfileFragment extends Fragment {
         ivCallSupport = view.findViewById(R.id.iv_call_support);
 
         // Set onClick listeners for the ImageViews
-        ivEmailSupport.setOnClickListener(v -> openEmailSupport()); // Open email client
-        ivCallSupport.setOnClickListener(v -> openCallSupport());   // Open phone dialer// Open phone dialer
+        ivEmailSupport.setOnClickListener(v -> openEmailSupport());
+        ivCallSupport.setOnClickListener(v -> openCallSupport());
 
         return view;
     }

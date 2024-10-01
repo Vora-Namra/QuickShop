@@ -28,32 +28,26 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Initialize Product RecyclerView
         recyclerViewProducts = view.findViewById(R.id.recycler_view_products);
         recyclerViewProducts.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Initialize Database Helper and fetch products
         dbHelper = new DatabaseHelper(getContext());
-        productList = dbHelper.getAllProducts();  // Load products from DB
+        productList = dbHelper.getAllProducts();
 
-        // Ensure productList is not null before setting up the adapter
         if (productList != null && !productList.isEmpty()) {
             productAdapter = new ProductAdapter(productList, new ProductAdapter.OnProductClickListener() {
                 @Override
                 public void onProductClick(Product product) {
-                    // Handle product click, e.g., open ProductDetailFragment
                     openProductDetailFragment(product.getId());
                 }
             });
             recyclerViewProducts.setAdapter(productAdapter);
         }
 
-        // Setup for the Deals Slider
         viewPager = view.findViewById(R.id.view_pager_deals);
         dealsAdapter = new DealsAdapter(getDealsImages());
         viewPager.setAdapter(dealsAdapter);
 
-        // Setup for the Brands RecyclerView
         recyclerViewBrands = view.findViewById(R.id.recycler_view_brands);
         recyclerViewBrands.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         brandImages = getBrandImages(); // Load brand images
@@ -71,7 +65,6 @@ public class HomeFragment extends Fragment {
                 .commit();
     }
 
-    // Method to return a list of drawable resources for deals
     private List<Integer> getDealsImages() {
         List<Integer> dealsImages = new ArrayList<>();
         dealsImages.add(R.drawable.quickshop);
@@ -84,7 +77,6 @@ public class HomeFragment extends Fragment {
         return dealsImages;
     }
 
-    // Method to return a list of drawable resources for brands
     private List<Integer> getBrandImages() {
         List<Integer> brandImages = new ArrayList<>();
         brandImages.add(R.drawable.cat1);

@@ -26,41 +26,38 @@ public class ImageLoader {
             return;
         }
 
-        // Validate and format the URL
         imageUrl = formatUrl(imageUrl);
 
-        // Load the image using Glide with retry logic and error handling
         String finalImageUrl = imageUrl;
         Glide.with(context)
                 .load(imageUrl)
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.placeholder_image) // Placeholder while loading
-                        .error(R.drawable.ic_error_image)          // Error image if loading fails
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)  // Cache strategy
+                        .placeholder(R.drawable.placeholder_image)
+                        .error(R.drawable.ic_error_image)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                 )
-                .listener(new RequestListener<Drawable>() { // Listener for debugging errors
+                .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                         Log.e(TAG, "Failed to load image: " + finalImageUrl, e);
-                        return false; // Return false to let Glide handle the error image display
+                        return false;
                     }
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                         Log.d(TAG, "Image loaded successfully: " + finalImageUrl);
-                        return false; // Return false to let Glide handle the image display
+                        return false;
                     }
                 })
-                .timeout(10000) // Increase timeout if network is slow
+                .timeout(10000)
                 .into(imageView)
                 .clearOnDetach();
     }
 
-    // Method to validate and format the URL
     private static String formatUrl(String imageUrl) {
         if (imageUrl == null || imageUrl.isEmpty()) {
             Log.e(TAG, "Image URL is empty or null.");
-            return ""; // Return an empty string if the URL is invalid
+            return "";
         }
 
         if (!imageUrl.startsWith("http://") && !imageUrl.startsWith("https://")) {

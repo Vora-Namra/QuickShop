@@ -75,15 +75,15 @@ public class CartFragment extends Fragment {
                 double totalPrice = calculateTotalPrice(cartItems);
                 long orderId = dbHelper.createOrder(userId, totalPrice, getCurrentDate());
 
-                // Add order items
+
                 for (CartItem item : cartItems) {
                     dbHelper.addOrderItem(orderId, item.getProductId(), item.getQuantity());
                 }
 
-                // Clear cart
+
                 dbHelper.clearCart(userId);
 
-                // Start splash screen activity
+
                 Intent intent = new Intent(getContext(), SplashScreenActivity.class);
                 startActivity(intent);
 
@@ -102,11 +102,11 @@ public class CartFragment extends Fragment {
         return total;
     }
     private String getCurrentDate() {
-        // Implement date formatting logic here
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return LocalDate.now().toString();
         } else {
-            // Return a default date format or handle as needed
+
             return java.text.DateFormat.getDateInstance().format(new java.util.Date());
         }
     }
@@ -114,7 +114,6 @@ public class CartFragment extends Fragment {
 
 
     private void showOrderConfirmation() {
-        // Navigate to OrderConfirmationFragment
         ((MainActivity) getActivity()).loadFragment(new OrderConfirmationFragment());
     }
 }

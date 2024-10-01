@@ -66,7 +66,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             productName.setText(product.getName());
             productPrice.setText(String.format("$%.2f", product.getPrice()));
 
-            // Ensure each product image URL is correctly loaded into the ImageView
+
             ImageLoader.loadImage(itemView.getContext(), product.getImageUrl(), productImage);
         }
     }

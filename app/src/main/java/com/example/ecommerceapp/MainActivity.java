@@ -24,13 +24,13 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
-        // Load either HomeFragment or LoginFragment based on login status
+
         if (isLoggedIn()) {
             loadFragment(new HomeFragment());
-            bottomNavigationView.setVisibility(View.VISIBLE); // Show bottom navigation
+            bottomNavigationView.setVisibility(View.VISIBLE);
         } else {
             loadFragment(new LoginFragment());
-            bottomNavigationView.setVisibility(View.GONE); // Hide bottom navigation for login
+            bottomNavigationView.setVisibility(View.GONE);
         }
     }
 
@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new OrderFragment();
                 }
 
-                // Load the selected fragment and ensure the bottom navigation is visible
+
                 if (selectedFragment != null) {
                     loadFragment(selectedFragment);
-                    bottomNavigationView.setVisibility(View.VISIBLE); // Show bottom navigation
+                    bottomNavigationView.setVisibility(View.VISIBLE);
                 }
 
                 return true;
@@ -62,15 +62,14 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, fragment)
                 .commit();
 
-        // Check if the fragment is LoginFragment or RegisterFragment to hide the bottom navigation
         if (fragment instanceof LoginFragment || fragment instanceof RegisterFragment) {
-            bottomNavigationView.setVisibility(View.GONE); // Hide bottom navigation
+            bottomNavigationView.setVisibility(View.GONE);
         } else {
-            bottomNavigationView.setVisibility(View.VISIBLE); // Show bottom navigation
+            bottomNavigationView.setVisibility(View.VISIBLE);
         }
     }
 
-    // Method to check if the user is logged in
+
     private boolean isLoggedIn() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         return sharedPreferences.getBoolean("isLoggedIn", false);

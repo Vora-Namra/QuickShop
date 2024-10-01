@@ -51,7 +51,7 @@ public class LoginFragment extends Fragment {
             editor.putInt("userId", user.getId());
             editor.apply();
 
-            // Navigate to HomeFragment
+
             ((MainActivity) getActivity()).loadFragment(new HomeFragment());
         } else {
             Toast.makeText(getContext(), "Invalid credentials", Toast.LENGTH_SHORT).show();
