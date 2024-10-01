@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 
 public class ProfileFragment extends Fragment {
@@ -81,6 +83,7 @@ public class ProfileFragment extends Fragment {
             String phone = etPhone.getText().toString();
             User user = dbHelper.getUserById(userId);
             dbHelper.updateUser(userId, user.getUsername(), user.getEmail(), address, phone);
+            Toast.makeText(getContext(),"Profile Updated Successfully",Toast.LENGTH_LONG).show();
         }
     }
 

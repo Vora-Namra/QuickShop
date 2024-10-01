@@ -92,6 +92,11 @@ public class HomeFragment extends Fragment {
         brandImages.add(R.drawable.cat3);
         brandImages.add(R.drawable.cat4);
         brandImages.add(R.drawable.cat5);
+        brandImages.add(R.drawable.cat1);
+        brandImages.add(R.drawable.cat2);
+        brandImages.add(R.drawable.cat3);
+        brandImages.add(R.drawable.cat4);
+        brandImages.add(R.drawable.cat5);
         return brandImages;
     }
 }

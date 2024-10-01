@@ -320,7 +320,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_PRODUCT_NAME + ", " +
                         COLUMN_PRODUCT_DESCRIPTION + ", " +
                         COLUMN_PRODUCT_PRICE + ", " +
-                        COLUMN_PRODUCT_IMAGE_URL + ") VALUES ('Smartphone', 'High-end smartphone with advanced features', 999.99, 'https://www.images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')",
+                        COLUMN_PRODUCT_IMAGE_URL + ") VALUES ('Smartphone', 'High-end smartphone with advanced features', 999.99, 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')",
                 "INSERT INTO " + TABLE_PRODUCTS + " (" +
                         COLUMN_PRODUCT_NAME + ", " +
                         COLUMN_PRODUCT_DESCRIPTION + ", " +
