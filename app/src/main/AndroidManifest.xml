@@ -18,9 +18,7 @@
         <activity
             android:name=".BrandAdapter"
             android:exported="false" />
-        <activity
-            android:name=".DealSliderAdapter"
-            android:exported="false" />
+        
         <activity
             android:name=".SplashActivity"
             android:exported="true">
