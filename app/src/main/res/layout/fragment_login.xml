@@ -62,9 +62,8 @@
             android:text="Login"
             android:textColor="#FFFFFF"
             android:textSize="18dp"
-            android:backgroundTint="#6200EE"
+            android:backgroundTint="#FFA500"
             android:fontFamily="sans-serif-medium"
-            android:background="@drawable/button_background"
             android:elevation="4dp"
             android:layout_marginBottom="16dp" />
 
@@ -73,11 +72,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Register"
-            android:textColor="#6200EE"
+            android:textColor="#FFA500"
             android:textSize="18dp"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="#FFFF"
             android:fontFamily="sans-serif-medium"
-            android:background="@drawable/button_border"
             android:elevation="4dp" />
 
         <TextView
